@@ -10,8 +10,29 @@
 			Are you sure you <u><b>don't</b></u> want to buy our book?
 		</p>
 		<form action="/more-user-data" method="post">
-			<button name="action" value="deny" class="deny-button" type="submit">Yes, I am sure I don't want to buy the book</button>
+			<button id="deny-button" name="action" value="deny" class="deny-button" type="submit">Yes, I am sure I don't want to buy the book</button>
 			<button name="action" value="confirm" class="confirm-button" type="submit">Yes, I want to buy the book</button>
 		</form>
+		<p>Please wait 15 seconds before making your choice</p>
+
+		<script>
+			const denyButton = document.getElementById("deny-button");
+
+			denyButton.disabled = true;
+			denyButton.classList.add("deny-button-disabled");
+
+			denyButton.addEventListener("click", function (event) {
+				console.log("clicked");
+				if (denyButton.disabled) {
+					event.preventDefault();
+					alert("This button is currently disabled. Please wait 15 seconds");
+				}
+			});
+
+			setTimeout(() => {
+				denyButton.disabled = false;
+				denyButton.classList.remove("deny-button-disabled");
+			}, 15000);
+		</script>
 	</body>
 </html>
