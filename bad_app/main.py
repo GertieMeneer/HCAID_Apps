@@ -15,7 +15,9 @@ def get_started_page():
 
 @app.route("/home")
 def home_page():
-    return render_template("/home.html", shopping_cart_items=0)
+    username = request.cookies.get('username')
+    cart_items = get_shopping_cart_count(username);
+    return render_template("/home.html", shopping_cart_items=cart_items)
 
 @app.route("/user-data", methods=["POST"])
 def user_data_page():
@@ -69,6 +71,14 @@ def is_empty_or_null(value):
 
 def get_shopping_cart_count(cookie):
     if cookie == None: return 0
+
+    if cookie not in user_data:
+        user_data[cookie] = {
+            "password": None,
+            "age": None,
+            "use_case": None,
+            "shopping_cart_items": []
+        }
 
     shopping_cart_items = user_data[cookie]["shopping_cart_items"]
     return len(shopping_cart_items)
