@@ -14,3 +14,11 @@ We will be making an AI that will be able to predict a movie that the user will 
 -   Run `pip install -r requirements.txt`
 -   Run `python main.py`
 -   Go to `localhost:3000`
+
+## Running the good app
+
+-   Create a new python environment inside good_app/ called "env". Can be done with conda, python, etc.
+-   Activate the environment in the terminal
+-   Run `pip install -r requirements.txt`
+-   Run `python main.py`
+-   Go to `localhost:5000`
