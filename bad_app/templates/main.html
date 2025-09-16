@@ -9,6 +9,7 @@
 		<p>Not happy with the movies being recommended? Use this test to gain insights and predictions for movies!</p>
 		<img src="{{ url_for('static', filename='img/rating.png')}}" />
 		<p>Users rate us a 9.6/10!</p>
+		{% include "components/shop.html" %}
 		<form action="/get-started">
 			<button class="get-started-button" type="submit">Get to know my movie</button>
 		</form>

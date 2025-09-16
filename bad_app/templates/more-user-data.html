@@ -5,10 +5,7 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
 	</head>
 	<body>
-		<div class="shopping-cart">
-			<img src="{{ url_for('static', filename='img/shopping_cart.svg')}}" />
-			<p>{{shopping_cart_items}}</p>
-		</div>
+		{% include "components/shopping-cart.html" %}
 		<h1>Home</h1>
 		<p>In order for our prediction to be personalized even more, please fill in the following fields:</p>
 		<form action="/user-movie-data" class="vertical-group" method="post"">
