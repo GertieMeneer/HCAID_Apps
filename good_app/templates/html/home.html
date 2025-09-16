@@ -1,16 +1,135 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Simple Web App</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie predictor AI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 20px;
+      background: #fff;
+      position: relative;
+      text-align: center;
+    }
+    .top-section {
+      width: 30%;
+      text-align: center;
+    }
+    .top-section p {
+      margin: 0 0 10px;
+      font-size: 0.9rem;
+      color: #333;
+    }
+    .top-button {
+      padding: 10px 20px;
+      background: #0077ff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .top-button:hover {
+      background: #005fcc;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 60px;
+    }
+    .form-group {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+    label {
+      margin-right: 10px;
+      font-weight: bold;
+      min-width: 120px;
+      text-align: right;
+    }
+    select, input[type="text"] {
+      padding: 8px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .predict-button {
+      margin-top: 30px;
+      padding: 15px 40px;
+      background: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .predict-button:hover {
+      background: #1f8c39;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to My Web App</h1>
-    <form method="POST" action="/submit">
-        <label for="username">Enter your name:</label>
-        <input type="text" name="username" required>
-        <button type="submit">Submit</button>
+  <header>
+    <div class="top-section" style="text-align:left;">
+      <p>If you want to know more about the bias of this AI you'll find more information about this. When you click on the button below this text</p>
+      <a href="/bias" class="top-button">Bias</a>
+    </div>
+    <div class="top-section">
+      <p>Do you want to learn about how our model gets to it's conclusie click on the button below</p>
+      <a href="/explainability" class="top-button">Explainability</a>
+    </div>
+    <div class="top-section" style="text-align:right;">
+      <p>If you want to know more about what we do with your data click on this button below</p>
+      <a href="/privacy" class="top-button">Privacy</a>
+    </div>
+  </header>
+
+  <main>
+    <form action="/predict" method="POST">
+      <div class="form-group">
+        <label for="dropdown1">Option 1:</label>
+        <select id="dropdown1" name="dropdown1">
+          <option>Select</option>
+          <option>Choice A</option>
+          <option>Choice B</option>
+          <option>Choice C</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="dropdown2">Option 2:</label>
+        <select id="dropdown2" name="dropdown2">
+          <option>Select</option>
+          <option>Choice A</option>
+          <option>Choice B</option>
+          <option>Choice C</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="dropdown3">Option 3:</label>
+        <select id="dropdown3" name="dropdown3">
+          <option>Select</option>
+          <option>Choice A</option>
+          <option>Choice B</option>
+          <option>Choice C</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="inputField">Your Input:</label>
+        <input type="text" id="inputField" name="inputField" placeholder="Type here...">
+      </div>
+      <button class="predict-button" type="submit">Predict</button>
     </form>
-    <br>
-    <a href="{{ url_for('about') }}">Go to About Page</a>
+  </main>
 </body>
 </html>
