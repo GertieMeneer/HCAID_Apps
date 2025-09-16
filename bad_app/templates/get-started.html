@@ -6,11 +6,18 @@
 	</head>
 	<body>
 		<h1>Get started</h1>
-		<form action="/user-data" class="vertical-group">
+		<form action="/user-data" class="vertical-group" method="post">
 			<input name="username" placeholder="Username..." />
 			<input name="password" type="password" placeholder="Password..." />
 			<input name="age" type="number" min="0" max="100" placeholder="Age..." />
-			<button type="submit">Continue</button>
+			<p>Why do you want to use our service?</p>
+			<select name="use_case">
+				<option>Get movie recommendations</option>
+				<option>To see if my</option>
+				<option>For fun to see if the recommendations align</option>
+				<option>Add more options here</option>
+			</select>
+			<button type="submit">Create Account</button>
 		</form>
 	</body>
 </html>
