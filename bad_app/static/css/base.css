@@ -3,7 +3,7 @@ button:hover {
 }
 
 .get-started-button {
-	width: 100px;
+	width: 170px;
 	height: 50px;
 	background-color: green;
 	color: white;
@@ -22,4 +22,25 @@ button:hover {
 	flex-direction: row;
 	gap: 10px;
 	width: fit-content;
+}
+
+.shopping-cart {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	text-align: center;
+}
+
+.confirm-button {
+	background-color: green;
+	color: white;
+	font-size: 10px;
+	padding: 10px;
+}
+
+.deny-button {
+	background-color: red;
+	color: white;
+	font-size: 10px;
+	padding: 10px;
 }

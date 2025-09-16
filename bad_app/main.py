@@ -7,11 +7,15 @@ user_data = {}
 
 @app.route("/")
 def main():
-    return render_template("main.html")
+    return render_template("main.html", shopping_cart_items=0)
 
 @app.route("/get-started")
 def get_started():
     return render_template("/get-started.html")
+
+@app.route("/home")
+def home():
+    return render_template("/home.html", shopping_cart_items=0)
 
 @app.route("/user-data", methods=["POST"])
 def user_data():
@@ -24,10 +28,6 @@ def user_data():
         print("send error message")
 
     return redirect("/home")
-
-@app.route("/home")
-def home():
-    return render_template("/home.html")
 
 @app.route("/book-confirmation", methods=["POST"])
 def book_confirmation():
