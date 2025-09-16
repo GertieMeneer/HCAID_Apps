@@ -16,3 +16,10 @@ button:hover {
 	gap: 10px;
 	width: 200px;
 }
+
+.horizontal-group {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+	width: fit-content;
+}
