@@ -29,6 +29,14 @@ def user_data():
 def home():
     return render_template("/home.html")
 
+@app.route("/book-confirmation")
+def book_confirmation():
+    return render_template("/book-confirmation.html")
+
+@app.route("/more-user-data")
+def more_user_data():
+    return render_template("/more-user-data.html")
+
 def is_empty_or_null(value):
     return value is None or value == ''
 

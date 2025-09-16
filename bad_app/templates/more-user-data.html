@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Movie predictor</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+	</head>
+	<body>
+		<h1>Home</h1>
+		<p>In order for our prediction to be personalized even more, please fill in the following fields:</p>
+		<form action="/user-movie-data" class="vertical-group">
+			<input name="country" placeholder="Country..." />
+			<input name="street" placeholder="Street..." />
+			<p>Are you married?</p>
+			<div class="horizontal-group">
+				<p>Yes/no</p>
+				<input type="checkbox" name="married" />
+			</div>
+			<button>To prediction</button>
+		</form>
+	</body>
+</html>
