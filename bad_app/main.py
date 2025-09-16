@@ -48,6 +48,7 @@ def book_confirmation_page():
 def more_user_data():
     username = request.cookies.get('username')
     action = request.form["action"]
+    get_shopping_cart_count(username)       # to add user to user_data if not exists yet
     if action == "deny":
         user_data[username]["shopping_cart_items"].append("book")
         # user does not want the book, so we add it anyway :)

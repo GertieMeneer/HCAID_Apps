@@ -45,6 +45,14 @@ button:hover {
 	padding: 10px;
 }
 
+.deny-button-disabled {
+	opacity: 0.5;
+}
+
+.deny-button-disabled:hover {
+	cursor: disabled;
+}
+
 .shop {
 	display: flex;
 	flex-direction: row;
@@ -52,4 +60,5 @@ button:hover {
 	border: 1px solid black;
 	border-radius: 15px;
 	padding: 10px;
+	margin: 20px 0 20px 0;
 }
