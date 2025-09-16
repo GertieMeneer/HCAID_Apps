@@ -29,16 +29,23 @@ def user_data():
 def home():
     return render_template("/home.html")
 
-@app.route("/book-confirmation")
+@app.route("/book-confirmation", methods=["POST"])
 def book_confirmation():
     return render_template("/book-confirmation.html")
 
-@app.route("/more-user-data")
+@app.route("/more-user-data", methods=["POST"])
 def more_user_data():
     return render_template("/more-user-data.html")
 
+@app.route("/user-movie-data", methods=["POST"])
+def user_movie_data():
+    return render_template("/user-movie-data.html")
+
+@app.route("/prediction")
+def prediction():
+    return render_template("/prediction.html")
+
 def is_empty_or_null(value):
     return value is None or value == ''
-
 
 serve(app, port=3000)
