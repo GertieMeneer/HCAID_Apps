@@ -1,13 +1,13 @@
+button:hover {
+	cursor: pointer;
+}
+
 .get-started-button {
 	width: 100px;
 	height: 50px;
 	background-color: green;
 	color: white;
 	border-radius: 10px;
-}
-
-.get-started-button:hover {
-	cursor: pointer;
 }
 
 .vertical-group {
