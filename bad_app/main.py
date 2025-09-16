@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, make_response
 from waitress import serve
 
 app = Flask(__name__)
@@ -6,19 +6,19 @@ app = Flask(__name__)
 user_data = {}
 
 @app.route("/")
-def main():
-    return render_template("main.html", shopping_cart_items=0)
+def main_page():
+    return render_template("main.html")
 
 @app.route("/get-started")
-def get_started():
+def get_started_page():
     return render_template("/get-started.html")
 
 @app.route("/home")
-def home():
+def home_page():
     return render_template("/home.html", shopping_cart_items=0)
 
 @app.route("/user-data", methods=["POST"])
-def user_data():
+def user_data_page():
     username = request.form["username"]
     password = request.form["password"]
     age = request.form["age"]
@@ -26,16 +26,35 @@ def user_data():
 
     if is_empty_or_null(username) or is_empty_or_null(password) or is_empty_or_null(age) or is_empty_or_null(use_case):
         print("send error message")
+    
+    user_data[username] = {
+        "password": password,
+        "age": age,
+        "use_case": use_case,
+        "shopping_cart_items": []
+    }
 
-    return redirect("/home")
+    response = make_response(redirect("/home"))
+    response.set_cookie("username", username)
+    return response
 
 @app.route("/book-confirmation", methods=["POST"])
-def book_confirmation():
+def book_confirmation_page():
     return render_template("/book-confirmation.html")
 
 @app.route("/more-user-data", methods=["POST"])
 def more_user_data():
-    return render_template("/more-user-data.html")
+    username = request.cookies.get('username')
+    action = request.form["action"]
+    if action == "deny":
+        user_data[username]["shopping_cart_items"].append("book")
+        # user does not want the book, so we add it anyway :)
+    if action == "confirm":
+        user_data[username]["shopping_cart_items"].append("book")
+
+    shopping_cart = get_shopping_cart_count(username)
+        
+    return render_template("/more-user-data.html", shopping_cart_items=shopping_cart)
 
 @app.route("/user-movie-data", methods=["POST"])
 def user_movie_data():
@@ -47,5 +66,11 @@ def prediction():
 
 def is_empty_or_null(value):
     return value is None or value == ''
+
+def get_shopping_cart_count(cookie):
+    if cookie == None: return 0
+
+    shopping_cart_items = user_data[cookie]["shopping_cart_items"]
+    return len(shopping_cart_items)
 
 serve(app, port=3000)
