@@ -7,7 +7,7 @@
 	<body>
 		{% include "components/shopping-cart.html" %}
 		<h1>Home</h1>
-		<p>In order for our prediction to be personalized even more, please fill in the following fields:</p>
+		<p onclick="window.location=''">Why are these questions asked?</p>
 		<form action="/user-movie-data" class="vertical-group" method="post"">
 			<input name="country" placeholder="Country..." />
 			<input name="street" placeholder="Street..." />
