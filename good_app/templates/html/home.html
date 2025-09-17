@@ -97,37 +97,92 @@
 
   <main>
     <form action="/predict" method="POST">
+
       <div class="form-group">
-        <label for="dropdown1">Option 1:</label>
-        <select id="dropdown1" name="dropdown1">
-          <option>Select</option>
-          <option>Choice A</option>
-          <option>Choice B</option>
-          <option>Choice C</option>
+        <label for="genre">Genre:</label>
+        <select id="genre" name="genre">
+            <option>Unknown</option>
+            <option>Action</option>
+            <option>Comedy</option>
+            <option>Documentary</option>
+            <option>Drama</option>
+            <option>Fantasy</option>
+            <option>Horror</option>
+            <option>Romance</option>
+            <option>Sci-Fi</option>
+            <option>Thriller</option>
         </select>
-      </div>
+        </div>
+
       <div class="form-group">
-        <label for="dropdown2">Option 2:</label>
-        <select id="dropdown2" name="dropdown2">
-          <option>Select</option>
-          <option>Choice A</option>
-          <option>Choice B</option>
-          <option>Choice C</option>
+        <label for="runtime">Runtime:</label>
+        <select id="runtime" name="runtime">
+            <option>Unknown</option>
+            <option>Short</option>
+            <option>Medium</option>
+            <option>Long</option>
         </select>
-      </div>
+        </div>
+
       <div class="form-group">
-        <label for="dropdown3">Option 3:</label>
-        <select id="dropdown3" name="dropdown3">
-          <option>Select</option>
-          <option>Choice A</option>
-          <option>Choice B</option>
-          <option>Choice C</option>
+        <label for="emotion">Emotion:</label>
+        <select id="emotion" name="emotion">
+            <option>Unknown</option>
+            <option>Sad</option>
+            <option>Heartwarming</option>
+            <option>Exciting</option>
+            <option>Scary</option>
+            <option>Inspiring</option>
+            <option>Funny</option>
         </select>
-      </div>
+        </div>
+        
       <div class="form-group">
-        <label for="inputField">Your Input:</label>
-        <input type="text" id="inputField" name="inputField" placeholder="Type here...">
-      </div>
+        <label for="language">Language:</label>
+        <select id="language" name="language">
+            <option>Unknown</option>
+            <option>French</option>
+            <option>Japanese</option>
+            <option>Spanish</option>
+            <option>Mandarin</option>
+            <option>German</option>
+            <option>Korean</option>
+            <option>Hindi</option>
+            <option>English</option>
+        </select>
+        </div>
+
+      <div class="form-group">
+        <label for="type">Type:</label>
+        <select id="type" name="type">
+            <option>Unknown</option>
+            <option>Movie</option>
+            <option>Series</option>
+        </select>
+        </div>
+
+      <div class="form-group">
+        <label for="rating">Rating:</label>
+        <select id="rating" name="rating">
+            <option>Unknown</option>
+            <option>Low</option>
+            <option>High</option>
+        </select>
+        </div>
+
+      <div class="form-group">
+        <label for="director">Director:</label>
+        <select id="director" name="director">
+            <option>Unknown</option>
+            <option>Christopher Nolan</option>
+            <option>Quentin Tarantino</option>
+            <option>Greta Gerwig</option>
+            <option>Martin Scorsese</option>
+            <option>Party Jenkins</option>
+            <option>Steven Spielberg</option>
+        </select>
+        </div>
+
       <button class="predict-button" type="submit">Predict</button>
     </form>
   </main>
