@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Prediction Results</title>
+    <title>Prediction Results</title>
 </head>
 <body>
-  <h1>Submitted Values</h1>
-  <ul>
-    <li>Option 1: {{ option1 }}</li>
-    <li>Option 2: {{ option2 }}</li>
-    <li>Option 3: {{ option3 }}</li>
-    <li>Your Input: {{ user_input }}</li>
-  </ul>
-  <a href="/">Back to Home</a>
+    <h1>Submitted Values</h1>
+    <ul>
+        <li>Genre: {{ genre }}</li>
+        <li>Runtime: {{ runtime }}</li>
+        <li>Emotion: {{ emotion }}</li>
+        <li>Language: {{ language }}</li>
+        <li>Type: {{ type }}</li>
+        <li>Rating: {{ rating }}</li>
+        <li>Director: {{ director }}</li>
+    </ul>
+
+    <h2>Predicted Movie Name: {{ prediction }}</h2>
+
+    <a href="/">Back to Home</a>
 </body>
 </html>
