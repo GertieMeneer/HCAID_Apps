@@ -13,24 +13,28 @@
 			<button id="deny-button" name="action" value="deny" class="deny-button" type="submit">Yes, I am sure I don't want to buy the book</button>
 			<button name="action" value="confirm" class="confirm-button" type="submit">Yes, I want to buy the book</button>
 		</form>
-		<p>Please wait 15 seconds before making your choice</p>
 
 		<script>
 			const denyButton = document.getElementById("deny-button");
 
-			denyButton.disabled = true;
+			denyButton.setAttribute("aria-disabled", "true");
 			denyButton.classList.add("deny-button-disabled");
 
-			denyButton.addEventListener("click", function (event) {
-				console.log("clicked");
-				if (denyButton.disabled) {
-					event.preventDefault();
+			denyButton.addEventListener("click", (e) => {
+				if (denyButton.getAttribute("aria-disabled") === "true") {
+					e.preventDefault();
+					alert("This button is currently disabled. Please wait 15 seconds");
+				}
+			});
+
+			denyButton.addEventListener("mouseenter", () => {
+				if (denyButton.getAttribute("aria-disabled") === "true") {
 					alert("This button is currently disabled. Please wait 15 seconds");
 				}
 			});
 
 			setTimeout(() => {
-				denyButton.disabled = false;
+				denyButton.removeAttribute("aria-disabled");
 				denyButton.classList.remove("deny-button-disabled");
 			}, 15000);
 		</script>

@@ -67,6 +67,10 @@ def user_movie_data():
 def prediction():
     return render_template("/prediction.html")
 
+@app.route("/why-these-questions")
+def why_these_questions_page():
+    return render_template("/questions-info.html")
+
 def is_empty_or_null(value):
     return value is None or value == ''
 
