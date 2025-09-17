@@ -6,17 +6,34 @@
 	</head>
 	<body>
 		<h1>Get started</h1>
-		<form action="/user-data" class="vertical-group" method="post">
+		<form action="/user-data" class="vertical-group" method="post" style="width: 300px">
 			<input name="username" placeholder="Username..." />
 			<input name="password" type="password" placeholder="Password..." />
 			<input name="age" type="number" min="0" max="100" placeholder="Age..." />
 			<p>Why do you want to use our service?</p>
 			<select name="use_case">
 				<option>Get movie recommendations</option>
-				<option>To see if my</option>
 				<option>For fun to see if the recommendations align</option>
-				<option>Add more options here</option>
+				<option>Check the weather forecast</option>
+				<option>Order a pizza</option>
+				<option>Apply for a mortgage</option>
+				<option>Look up my horoscope</option>
+				<option>Track my daily steps</option>
+				<option>Find nearby gas stations</option>
+				<option>Learn how to knit</option>
+				<option>Diagnose car engine problems</option>
+				<option>Review my tax returns</option>
+				<option>Get celebrity gossip</option>
+				<option>Schedule a dentist appointment</option>
+				<option>Plan my wedding</option>
 			</select>
+			<p>How did you hear about us?</p>
+			<select name="source">
+				<option>From a collegue</option>
+				<option>Found on the internet</option>
+				<option>From a family member</option>
+			</select>
+
 			<button type="submit">Create Account</button>
 		</form>
 
