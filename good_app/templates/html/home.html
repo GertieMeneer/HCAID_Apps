@@ -3,188 +3,127 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Movie predictor AI</title>
+  <title>Mushroom Predictor 🍄</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background: #f4f4f4;
-    }
-    header {
+      background: #fdf6e3;
+      font-family: 'Arial', sans-serif;
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 20px;
-      background: #fff;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
       position: relative;
-      text-align: center;
     }
-    .top-section {
-      width: 30%;
+
+    .container {
       text-align: center;
+      position: relative;
+      z-index: 10;
     }
-    .top-section p {
-      margin: 0 0 10px;
-      font-size: 0.9rem;
+
+    h1 {
+      font-size: 4rem;
+      color: #4a2c2a;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.6rem;
+      margin-bottom: 30px;
       color: #333;
     }
-    .top-button {
-      padding: 10px 20px;
-      background: #0077ff;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .top-button:hover {
-      background: #005fcc;
-    }
-    main {
+
+    .button-group {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 60px;
+      justify-content: center;
+      gap: 20px;
     }
-    .form-group {
-      display: flex;
-      align-items: center;
-      margin: 10px 0;
-    }
-    label {
-      margin-right: 10px;
-      font-weight: bold;
-      min-width: 120px;
-      text-align: right;
-    }
-    select, input[type="text"] {
-      padding: 8px;
-      width: 200px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .predict-button {
-      margin-top: 30px;
+
+    .button {
       padding: 15px 40px;
+      font-size: 1.3rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .try {
       background: #28a745;
       color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.2rem;
-      cursor: pointer;
     }
-    .predict-button:hover {
+
+    .try:hover {
       background: #1f8c39;
+    }
+
+    .info {
+      background: #0077ff;
+      color: #fff;
+    }
+
+    .info:hover {
+      background: #005fcc;
+    }
+
+    .mushroom, .fork, .knife, .plate {
+      position: absolute;
+      width: 90px;
+      opacity: 0.95;
+    }
+
+    .m1 { top: 8%; left: 12%; transform: rotate(-15deg); }
+    .m2 { top: 15%; right: 10%; transform: rotate(15deg); }
+    .m3 { bottom: 12%; left: 18%; transform: rotate(5deg); }
+    .m4 { bottom: 8%; right: 20%; transform: rotate(-10deg); }
+
+    .fork {
+      bottom: 5%;
+      left: 5%;
+      width: 110px;
+      transform: rotate(-20deg);
+    }
+
+    .knife {
+      bottom: 5%;
+      right: 5%;
+      width: 110px;
+      transform: rotate(20deg);
+    }
+
+    .plate {
+      width: 340px;
+      opacity: 0.15;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="top-section" style="text-align:left;">
-      <p>If you want to know more about the bias of this AI you'll find more information about this. When you click on the button below this text</p>
-      <a href="/bias" class="top-button">Bias</a>
+
+  <img src="https://pngimg.com/uploads/mushroom/mushroom_PNG3218.png" class="mushroom m1" alt="mushroom" />
+  <img src="https://pngimg.com/uploads/mushroom/mushroom_PNG3188.png" class="mushroom m2" alt="mushroom" />
+  <img src="https://pngimg.com/uploads/mushroom/mushroom_PNG3187.png" class="mushroom m3" alt="mushroom" />
+  <img src="https://pngimg.com/uploads/mushroom/mushroom_PNG3194.png" class="mushroom m4" alt="mushroom" />
+
+  <img src="https://pngimg.com/uploads/fork/fork_PNG3052.png" class="fork" alt="fork" />
+  <img src="https://pngimg.com/uploads/knife/knife_PNG106113.png" class="knife" alt="knife" />
+  <img src="https://pngimg.com/uploads/plate/plate_PNG5335.png" class="plate" alt="plate" />
+
+  <div class="container">
+    <h1>🍄 Mushroom Predictor 🍄</h1>
+    <p>Can I eat the mushroom?</p>
+    <div class="button-group">
+      <a href="/main" class="button try">Try it</a>
+      <a href="/info" class="button info">More info</a>
     </div>
-    <div class="top-section">
-      <p>Do you want to learn about how our model gets to it's conclusie click on the button below</p>
-      <a href="/explainability" class="top-button">Explainability</a>
-    </div>
-    <div class="top-section" style="text-align:right;">
-      <p>If you want to know more about what we do with your data click on this button below</p>
-      <a href="/privacy" class="top-button">Privacy</a>
-    </div>
-  </header>
+  </div>
 
-  <main>
-    <form action="/predict" method="POST">
-
-      <div class="form-group">
-        <label for="genre">Genre:</label>
-        <select id="genre" name="genre">
-            <option>Unknown</option>
-            <option>Action</option>
-            <option>Comedy</option>
-            <option>Documentary</option>
-            <option>Drama</option>
-            <option>Fantasy</option>
-            <option>Horror</option>
-            <option>Romance</option>
-            <option>Sci-Fi</option>
-            <option>Thriller</option>
-        </select>
-        </div>
-
-      <div class="form-group">
-        <label for="runtime">Runtime:</label>
-        <select id="runtime" name="runtime">
-            <option>Unknown</option>
-            <option>Short</option>
-            <option>Medium</option>
-            <option>Long</option>
-        </select>
-        </div>
-
-      <div class="form-group">
-        <label for="emotion">Emotion:</label>
-        <select id="emotion" name="emotion">
-            <option>Unknown</option>
-            <option>Sad</option>
-            <option>Heartwarming</option>
-            <option>Exciting</option>
-            <option>Scary</option>
-            <option>Inspiring</option>
-            <option>Funny</option>
-        </select>
-        </div>
-        
-      <div class="form-group">
-        <label for="language">Language:</label>
-        <select id="language" name="language">
-            <option>Unknown</option>
-            <option>French</option>
-            <option>Japanese</option>
-            <option>Spanish</option>
-            <option>Mandarin</option>
-            <option>German</option>
-            <option>Korean</option>
-            <option>Hindi</option>
-            <option>English</option>
-        </select>
-        </div>
-
-      <div class="form-group">
-        <label for="type">Type:</label>
-        <select id="type" name="type">
-            <option>Unknown</option>
-            <option>Movie</option>
-            <option>Series</option>
-        </select>
-        </div>
-
-      <div class="form-group">
-        <label for="rating">Rating:</label>
-        <select id="rating" name="rating">
-            <option>Unknown</option>
-            <option>Low</option>
-            <option>High</option>
-        </select>
-        </div>
-
-      <div class="form-group">
-        <label for="director">Director:</label>
-        <select id="director" name="director">
-            <option>Unknown</option>
-            <option>Christopher Nolan</option>
-            <option>Quentin Tarantino</option>
-            <option>Greta Gerwig</option>
-            <option>Martin Scorsese</option>
-            <option>Party Jenkins</option>
-            <option>Steven Spielberg</option>
-        </select>
-        </div>
-
-      <button class="predict-button" type="submit">Predict</button>
-    </form>
-  </main>
 </body>
 </html>

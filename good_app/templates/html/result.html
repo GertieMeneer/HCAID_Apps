@@ -1,22 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Prediction Results</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prediction Result 🍄</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fdf6e3;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 700px;
+      background: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: #4a2c2a;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #d9534f;
+      margin: 20px 0;
+    }
+
+    p {
+      font-size: 1.4rem;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      background: #0077ff;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #005fcc;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Submitted Values</h1>
-    <ul>
-        <li>Genre: {{ genre }}</li>
-        <li>Runtime: {{ runtime }}</li>
-        <li>Emotion: {{ emotion }}</li>
-        <li>Language: {{ language }}</li>
-        <li>Type: {{ type }}</li>
-        <li>Rating: {{ rating }}</li>
-        <li>Director: {{ director }}</li>
-    </ul>
+  <div class="container">
+    <h1>🍄 Mushroom Prediction Results</h1>
 
-    <h2>Predicted Movie Name: {{ prediction }}</h2>
+    <h2>
+      {{ prediction }}
+    </h2>
+    <p>
+      Confidence: {{ probability }}%
+    </p>
 
-    <a href="/">Back to Home</a>
+    <a href="/main" class="back-btn">⬅ Back to Home</a>
+  </div>
 </body>
 </html>
