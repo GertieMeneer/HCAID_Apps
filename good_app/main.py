@@ -1,15 +1,40 @@
 from flask import Flask, render_template, request
 import pandas as pd
 import joblib
+import numpy as np
 
 app = Flask(__name__)
 
-model = joblib.load("random_forest_model.pkl")
-label_encoders = joblib.load("label_encoders.pkl")
+rf = joblib.load("mushroom_rf_model.pkl")
+le_y = joblib.load("label_encoder.pkl")
+
+def predict_mushroom(user_input):
+    input_df = pd.DataFrame([user_input])
+
+    input_encoded = pd.get_dummies(input_df)
+
+    missing_cols = set(rf.feature_names_in_) - set(input_encoded.columns)
+    for col in missing_cols:
+        input_encoded[col] = 0
+    input_encoded = input_encoded[rf.feature_names_in_]
+
+    prob = rf.predict_proba(input_encoded)[0]
+    pred_index = np.argmax(prob)
+    pred_class = le_y.classes_[pred_index]
+    confidence = prob[pred_index] * 100
+    return pred_class, round(confidence, 2)
 
 @app.route("/")
 def home():
     return render_template("html/home.html")
+
+@app.route("/main")
+def main():
+    return render_template("html/main.html")
+
+@app.route("/info")
+def info():
+    return render_template("html/info.html")
 
 @app.route("/bias")
 def bias():
@@ -23,48 +48,34 @@ def explainability():
 def privacy():
     return render_template("html/privacy.html")
 
-@app.route("/predict", methods=["POST"])
-def predict():
-    genre = request.form.get("genre")
-    runtime = request.form.get("runtime")
-    emotion = request.form.get("emotion")
-    language = request.form.get("language")
-    type_ = request.form.get("type")
-    rating = request.form.get("rating")
-    director = request.form.get("director")
+@app.route("/result", methods=["POST"])
+def result():
+    user_input = {
+        'cap-diameter': request.form['cap_diameter'],
+        'cap-shape': request.form['cap_shape'],
+        'cap-surface': request.form['cap_surface'],
+        'cap-color': request.form['cap_color'],
+        'gill-attachment': request.form['gill_attachment'],
+        'gill-spacing': request.form['gill_spacing'],
+        'gill-color': request.form['gill_color'],
+        'stem-height': request.form['stem_height'],
+        'stem-width': request.form['stem_width'],
+        'stem-root': request.form['stem_root'],
+        'stem-surface': request.form['stem_surface'],
+        'stem-color': request.form['stem_color'],
+        'veil-type': request.form['veil_type'],
+        'veil-color': request.form['veil_color'],
+        'has-ring': request.form['has_ring'],
+        'ring-type': request.form['ring_type'],
+        'spore-print-color': request.form['spore_print_color']
+    }
 
-    example = pd.DataFrame([{
-        'Genre': genre,
-        'Runtime': runtime,
-        'Emotion': emotion,
-        'Language': language,
-        'Type': type_,
-        'Rating': rating,
-        'Director': director
-    }])
+    prediction, probability = predict_mushroom(user_input)
 
-    for col in ['Genre','Emotion','Language','Type','Director','Runtime','Rating']:
-        if col in label_encoders:
-            val = example.at[0, col]
-            # handle unseen values
-            if val not in label_encoders[col].classes_:
-                val = 'Unknown'
-            example[col] = label_encoders[col].transform([val])
+    class_map = {'p': 'Poisonous', 'e': 'Edible'}
+    prediction_full = class_map.get(prediction, prediction)
 
-    pred_name_code = model.predict(example)[0]
-    predicted_name = label_encoders['Name'].inverse_transform([pred_name_code])[0]
-
-    return render_template(
-        "html/result.html",
-        genre=genre,
-        runtime=runtime,
-        emotion=emotion,
-        language=language,
-        type=type_,
-        rating=rating,
-        director=director,
-        prediction=predicted_name
-    )
+    return render_template("html/result.html", prediction=prediction_full, probability=probability)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mushroom Predictor 🍄</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fdf6e3;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .top-bar {
+      width: 100%;
+      padding: 20px 0;
+      background: transparent;
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .top-bar a {
+      text-decoration: none;
+      background: #0077ff;
+      color: #fff;
+      padding: 12px 30px;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .top-bar a:hover {
+      background: #005fcc;
+    }
+
+    .container {
+      max-width: 700px;
+      background: #fff;
+      margin: 40px auto;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #4a2c2a;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.4rem;
+      color: #333;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      text-align: left;
+    }
+
+    label {
+      font-size: 1.2rem;
+      color: #4a2c2a;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      background: #f9f9f9;
+      box-sizing: border-box;
+    }
+
+    .full-width {
+      grid-column: 1 / 3;
+    }
+
+    .predict-btn {
+      margin-top: 30px;
+      padding: 15px 40px;
+      font-size: 1.4rem;
+      background: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .predict-btn:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="/info">ℹ️ More Info</a>
+  </div>
+
+  <div class="container">
+    <h1>🍄 Mushroom Predictor</h1>
+    <p>
+      Oh, you went to the forest and found some nice mushrooms 🍃<br />
+      Now you’re wondering if you can eat them or not...  
+      Don’t worry, we’ll help you figure it out!  
+      Just fill in the details below and we’ll tell you if it’s edible or poisonous.
+    </p>
+
+    <form id="mushroomForm" method="POST" action="/result">
+      <div>
+        <label for="cap_diameter">Cap Diameter (cm)</label>
+        <input type="number" id="cap_diameter" name="cap_diameter" min="0" step="0.1" />
+      </div>
+
+      <div>
+        <label for="cap_shape">Cap Shape</label>
+        <select id="cap_shape" name="cap_shape">
+          <option value="">--Select--</option>
+          <option value="bell">Bell</option>
+          <option value="conical">Conical</option>
+          <option value="convex">Convex</option>
+          <option value="flat">Flat</option>
+          <option value="sunken">Sunken</option>
+          <option value="spherical">Spherical</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="cap_surface">Cap Surface</label>
+        <select id="cap_surface" name="cap_surface">
+          <option value="">--Select--</option>
+          <option value="smooth">Smooth</option>
+          <option value="scaly">Scaly</option>
+          <option value="fibrous">Fibrous</option>
+          <option value="sticky">Sticky</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="cap_color">Cap Color</label>
+        <select id="cap_color" name="cap_color">
+          <option value="">--Select--</option>
+          <option value="brown">Brown</option>
+          <option value="white">White</option>
+          <option value="red">Red</option>
+          <option value="yellow">Yellow</option>
+          <option value="gray">Gray</option>
+          <option value="pink">Pink</option>
+          <option value="buff">Buff</option>
+          <option value="cinnamon">Cinnamon</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="gill_attachment">Gill Attachment</label>
+        <select id="gill_attachment" name="gill_attachment">
+          <option value="">--Select--</option>
+          <option value="free">Free</option>
+          <option value="attached">Attached</option>
+          <option value="decurrent">Decurrent</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="gill_spacing">Gill Spacing</label>
+        <select id="gill_spacing" name="gill_spacing">
+          <option value="">--Select--</option>
+          <option value="close">Close</option>
+          <option value="crowded">Crowded</option>
+          <option value="distant">Distant</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="gill_color">Gill Color</label>
+        <select id="gill_color" name="gill_color">
+          <option value="">--Select--</option>
+          <option value="white">White</option>
+          <option value="brown">Brown</option>
+          <option value="black">Black</option>
+          <option value="pink">Pink</option>
+          <option value="gray">Gray</option>
+          <option value="purple">Purple</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="stem_height">Stem Height (cm)</label>
+        <input type="number" id="stem_height" name="stem_height" min="0" step="0.1" />
+      </div>
+
+      <div>
+        <label for="stem_width">Stem Width (cm)</label>
+        <input type="number" id="stem_width" name="stem_width" min="0" step="0.1" />
+      </div>
+
+      <div>
+        <label for="stem_root">Stem Root</label>
+        <select id="stem_root" name="stem_root">
+          <option value="">--Select--</option>
+          <option value="bulbous">Bulbous</option>
+          <option value="club">Club</option>
+          <option value="equal">Equal</option>
+          <option value="rooted">Rooted</option>
+          <option value="missing">Missing</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="stem_surface">Stem Surface</label>
+        <select id="stem_surface" name="stem_surface">
+          <option value="">--Select--</option>
+          <option value="smooth">Smooth</option>
+          <option value="fibrous">Fibrous</option>
+          <option value="scaly">Scaly</option>
+          <option value="silky">Silky</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="stem_color">Stem Color</label>
+        <select id="stem_color" name="stem_color">
+          <option value="">--Select--</option>
+          <option value="white">White</option>
+          <option value="brown">Brown</option>
+          <option value="red">Red</option>
+          <option value="yellow">Yellow</option>
+          <option value="gray">Gray</option>
+          <option value="buff">Buff</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="veil_type">Veil Type</label>
+        <select id="veil_type" name="veil_type">
+          <option value="">--Select--</option>
+          <option value="partial">Partial</option>
+          <option value="universal">Universal</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="veil_color">Veil Color</label>
+        <select id="veil_color" name="veil_color">
+          <option value="">--Select--</option>
+          <option value="white">White</option>
+          <option value="brown">Brown</option>
+          <option value="orange">Orange</option>
+          <option value="yellow">Yellow</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="has_ring">Has Ring</label>
+        <select id="has_ring" name="has_ring">
+          <option value="">--Select--</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="ring_type">Ring Type</label>
+        <select id="ring_type" name="ring_type">
+          <option value="">--Select--</option>
+          <option value="pendant">Pendant</option>
+          <option value="flaring">Flaring</option>
+          <option value="large">Large</option>
+          <option value="none">None</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="spore_print_color">Spore Print Color</label>
+        <select id="spore_print_color" name="spore_print_color">
+          <option value="">--Select--</option>
+          <option value="black">Black</option>
+          <option value="brown">Brown</option>
+          <option value="purple">Purple</option>
+          <option value="white">White</option>
+          <option value="yellow">Yellow</option>
+          <option value="green">Green</option>
+        </select>
+      </div>
+
+      <div class="full-width">
+        <button type="submit" class="predict-btn">🔍 Predict</button>
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("mushroomForm");
+
+    form.addEventListener("submit", function(event) {
+      const inputs = form.querySelectorAll("input, select");
+      for (let input of inputs) {
+        if (input.value === "") {
+          alert("⚠️ Please fill in all fields before predicting!");
+          event.preventDefault(); // prevent form submission
+          return;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
