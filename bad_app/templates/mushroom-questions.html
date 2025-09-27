@@ -6,6 +6,188 @@
 	</head>
 	<body>
 		<form action="/mushroom-info" po></form>
+
+		<form id="mushroomForm" method="POST" action="/result">
+			<div>
+				<label for="cap_diameter">Cap Diameter (cm)</label>
+				<input type="number" id="cap_diameter" name="cap_diameter" min="0" step="0.1" />
+			</div>
+
+			<div>
+				<label for="cap_shape">Cap Shape</label>
+				<select id="cap_shape" name="cap_shape">
+					<option value="">--Select--</option>
+					<option value="bell">Bell</option>
+					<option value="conical">Conical</option>
+					<option value="convex">Convex</option>
+					<option value="flat">Flat</option>
+					<option value="sunken">Sunken</option>
+					<option value="spherical">Spherical</option>
+				</select>
+			</div>
+
+			<div>
+				<label for="cap_surface">Cap Surface</label>
+				<select id="cap_surface" name="cap_surface">
+					<option value="">--Select--</option>
+					<option value="smooth">Smooth</option>
+					<option value="scaly">Scaly</option>
+					<option value="fibrous">Fibrous</option>
+					<option value="sticky">Sticky</option>
+				</select>
+			</div>
+
+			<div>
+				<label for="cap_color">Cap Color</label>
+				<select id="cap_color" name="cap_color">
+					<option value="">--Select--</option>
+					<option value="brown">Brown</option>
+					<option value="white">White</option>
+					<option value="red">Red</option>
+					<option value="yellow">Yellow</option>
+					<option value="gray">Gray</option>
+					<option value="pink">Pink</option>
+					<option value="buff">Buff</option>
+					<option value="cinnamon">Cinnamon</option>
+				</select>
+			</div>
+
+			<div>
+				<label for="gill_attachment">Gill Attachment</label>
+				<select id="gill_attachment" name="gill_attachment">
+					<option value="">--Select--</option>
+					<option value="free">Free</option>
+					<option value="attached">Attached</option>
+					<option value="decurrent">Decurrent</option>
+				</select>
+			</div>
+
+			<div>
+				<label for="gill_spacing">Gill Spacing</label>
+				<select id="gill_spacing" name="gill_spacing">
+					<option value="">--Select--</option>
+					<option value="close">Close</option>
+					<option value="crowded">Crowded</option>
+					<option value="distant">Distant</option>
+				</select>
+			</div>
+
+			<div>
+				<label for="gill_color">Gill Color</label>
+				<select id="gill_color" name="gill_color">
+					<option value="">--Select--</option>
+					<option value="white">White</option>
+					<option value="brown">Brown</option>
+					<option value="black">Black</option>
+					<option value="pink">Pink</option>
+					<option value="gray">Gray</option>
+					<option value="purple">Purple</option>
+				</select>
+			</div>
+
+			<div>
+				<label for="stem_height">Stem Height (cm)</label>
+				<input type="number" id="stem_height" name="stem_height" min="0" step="0.1" />
+			</div>
+
+			<div>
+				<label for="stem_width">Stem Width (cm)</label>
+				<input type="number" id="stem_width" name="stem_width" min="0" step="0.1" />
+			</div>
+
+			<div>
+				<label for="stem_root">Stem Root</label>
+				<select id="stem_root" name="stem_root">
+					<option value="">--Select--</option>
+					<option value="bulbous">Bulbous</option>
+					<option value="club">Club</option>
+					<option value="equal">Equal</option>
+					<option value="rooted">Rooted</option>
+					<option value="missing">Missing</option>
+				</select>
+			</div>
+
+			<div>
+				<label for="stem_surface">Stem Surface</label>
+				<select id="stem_surface" name="stem_surface">
+					<option value="">--Select--</option>
+					<option value="smooth">Smooth</option>
+					<option value="fibrous">Fibrous</option>
+					<option value="scaly">Scaly</option>
+					<option value="silky">Silky</option>
+				</select>
+			</div>
+
+			<div>
+				<label for="stem_color">Stem Color</label>
+				<select id="stem_color" name="stem_color">
+					<option value="">--Select--</option>
+					<option value="white">White</option>
+					<option value="brown">Brown</option>
+					<option value="red">Red</option>
+					<option value="yellow">Yellow</option>
+					<option value="gray">Gray</option>
+					<option value="buff">Buff</option>
+				</select>
+			</div>
+
+			<div>
+				<label for="veil_type">Veil Type</label>
+				<select id="veil_type" name="veil_type">
+					<option value="">--Select--</option>
+					<option value="partial">Partial</option>
+					<option value="universal">Universal</option>
+				</select>
+			</div>
+
+			<div>
+				<label for="veil_color">Veil Color</label>
+				<select id="veil_color" name="veil_color">
+					<option value="">--Select--</option>
+					<option value="white">White</option>
+					<option value="brown">Brown</option>
+					<option value="orange">Orange</option>
+					<option value="yellow">Yellow</option>
+				</select>
+			</div>
+
+			<div>
+				<label for="has_ring">Has Ring</label>
+				<select id="has_ring" name="has_ring">
+					<option value="">--Select--</option>
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</select>
+			</div>
+
+			<div>
+				<label for="ring_type">Ring Type</label>
+				<select id="ring_type" name="ring_type">
+					<option value="">--Select--</option>
+					<option value="pendant">Pendant</option>
+					<option value="flaring">Flaring</option>
+					<option value="large">Large</option>
+					<option value="none">None</option>
+				</select>
+			</div>
+
+			<div>
+				<label for="spore_print_color">Spore Print Color</label>
+				<select id="spore_print_color" name="spore_print_color">
+					<option value="">--Select--</option>
+					<option value="black">Black</option>
+					<option value="brown">Brown</option>
+					<option value="purple">Purple</option>
+					<option value="white">White</option>
+					<option value="yellow">Yellow</option>
+					<option value="green">Green</option>
+				</select>
+			</div>
+
+			<div class="full-width">
+				<button type="submit" class="predict-btn">Predict</button>
+			</div>
+		</form>
 		{% include "components/bottom-bar.html" %}
 	</body>
 </html>
