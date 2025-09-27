@@ -31,6 +31,10 @@ button:hover {
 	text-align: center;
 }
 
+.shopping-cart p {
+	margin-top: -5px;
+}
+
 .confirm-button {
 	background-color: green;
 	color: white;
