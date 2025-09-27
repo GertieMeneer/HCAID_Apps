@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request, redirect, make_response
 from waitress import serve
 import pandas as pd
+import joblib
+import numpy as np
+
+rf = joblib.load("mushroom_rf_model.pkl")
+le_y = joblib.load("label_encoder.pkl")
 
 app = Flask(__name__)
 
