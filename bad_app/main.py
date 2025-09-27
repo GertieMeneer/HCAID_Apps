@@ -7,6 +7,13 @@ import numpy as np
 rf = joblib.load("../data/model_files/mushroom_rf_model.pkl")
 le_y = joblib.load("../data/model_files/label_encoder.pkl")
 
+NUMERIC_FEATURES = ['cap-diameter', 'stem-height', 'stem-width']
+CATEGORICAL_FEATURES = [
+    'cap-shape', 'cap-surface', 'cap-color', 'gill-attachment', 'gill-spacing', 
+    'gill-color', 'stem-root', 'stem-surface', 'stem-color', 'veil-type', 
+    'veil-color', 'has-ring', 'ring-type', 'spore-print-color'
+]
+
 app = Flask(__name__)
 
 user_data = {}
@@ -107,9 +114,12 @@ def result():
     return render_template("result.html", prediction=prediction_full, probability=probability)
 
 def predict_mushroom(user_input):
+    for feature in NUMERIC_FEATURES:
+        user_input[feature] = float(user_input[feature])
+
     input_df = pd.DataFrame([user_input])
 
-    input_encoded = pd.get_dummies(input_df)
+    input_encoded = pd.get_dummies(input_df, columns=CATEGORICAL_FEATURES)
 
     missing_cols = set(rf.feature_names_in_) - set(input_encoded.columns)
     for col in missing_cols:
