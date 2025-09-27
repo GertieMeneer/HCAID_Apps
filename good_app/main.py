@@ -5,8 +5,8 @@ import numpy as np
 
 app = Flask(__name__)
 
-rf = joblib.load("mushroom_rf_model.pkl")
-le_y = joblib.load("label_encoder.pkl")
+rf = joblib.load("../data/model_files/mushroom_rf_model.pkl")
+le_y = joblib.load("../data/model_files/label_encoder.pkl")
 
 def predict_mushroom(user_input):
     input_df = pd.DataFrame([user_input])
