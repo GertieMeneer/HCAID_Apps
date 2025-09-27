@@ -57,11 +57,11 @@ def more_user_data():
 
     shopping_cart = get_shopping_cart_count(username)
         
-    return render_template("/more-user-data.html", shopping_cart_items=shopping_cart)
+    return render_template("/user-data.html", shopping_cart_items=shopping_cart)
 
-@app.route("/user-movie-data", methods=["POST"])
+@app.route("/mushroom-questions", methods=["POST"])
 def user_movie_data():
-    return render_template("/user-movie-data.html")
+    return render_template("/mushroom-questions.html")
 
 @app.route("/prediction")
 def prediction():
