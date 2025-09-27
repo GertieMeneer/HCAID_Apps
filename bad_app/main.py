@@ -104,7 +104,7 @@ def result():
     class_map = {'p': 'Poisonous', 'e': 'Edible'}
     prediction_full = class_map.get(prediction, prediction)
 
-    return render_template("html/result.html", prediction=prediction_full, probability=probability)
+    return render_template("result.html", prediction=prediction_full, probability=probability)
 
 def predict_mushroom(user_input):
     input_df = pd.DataFrame([user_input])
