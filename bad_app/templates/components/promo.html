@@ -15,11 +15,16 @@
 		<img src="{{ url_for('static', filename='img/rating.png')}}" />
 		<p>Users rate us a 9.6/10!</p>
 	</div>
+	<div id="slide-4">
+		<img src="{{ url_for('static', filename='img/car_insurance.jpg')}}" />
+		<p>Free car insurance!</p>
+		<button class="buy-button" onclick="window.location='/get-started'" style="width: 500px">Buy now for 249,67 per year!</button>
+	</div>
 </div>
 
 <script>
 	document.addEventListener("DOMContentLoaded", function () {
-		const ids = ["slide-1", "slide-2", "slide-3"];
+		const ids = ["slide-1", "slide-2", "slide-3", "slide-4"];
 		let current = 0;
 
 		function showSlide(index) {

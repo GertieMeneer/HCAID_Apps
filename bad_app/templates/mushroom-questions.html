@@ -20,6 +20,8 @@
 		</script>
 
 		{% include "components/shopping-cart.html" %}
+		<h1>Mushroom characteristics</h1>
+		<p onclick="window.location='/why-these-questions'" class="clickable">Which fields are required?</p>
 		<form id="mushroom-form" method="POST" action="/predict">
 			<div class="vertical-group">
 				<input type="number" id="cap-diameter" name="cap-diameter" min="0" step="0.1" placeholder="Cap Diameter (cm)" />

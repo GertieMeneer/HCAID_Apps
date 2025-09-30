@@ -8,8 +8,8 @@
 		{% include "components/promo.html" %}
 
 		{% include "components/shopping-cart.html" %}
-		<h1>Home</h1>
-		<p onclick="window.location=''">Why are these questions asked?</p>
+		<h1>Questionnaire</h1>
+		<p onclick="window.location='/why-these-questions'">Which fields are required?</p>
 		<form action="/mushroom-questions" class="vertical-group" method="post"">
 			<input name="country" placeholder="Country..." />
 			<input name="street" placeholder="Street..." />

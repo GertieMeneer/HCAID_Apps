@@ -104,3 +104,12 @@ button:hover {
 	font-size: 34px;
 	width: 100%;
 }
+
+.clickable {
+	color: green;
+	cursor: pointer;
+}
+
+.clickable:hover {
+	text-decoration: underline;
+}
