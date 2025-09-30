@@ -5,7 +5,20 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
 	</head>
 	<body>
-		<form method="POST" action="/predict">
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				document.getElementById("mushroom-form").onsubmit = function (event) {
+					event.preventDefault();
+
+					while (!window.confirm("Please buy our book. It helps to keep this site active")) {}
+
+					event.target.submit();
+				};
+			});
+		</script>
+
+		{% include "components/shopping-cart.html" %}
+		<form id="mushroom-form" method="POST" action="/predict">
 			<div class="vertical-group">
 				<input type="number" id="cap-diameter" name="cap-diameter" min="0" step="0.1" placeholder="Cap Diameter (cm)" />
 

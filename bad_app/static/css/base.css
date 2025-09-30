@@ -1,3 +1,7 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
 button:hover {
 	cursor: pointer;
 }
@@ -58,11 +62,17 @@ button:hover {
 }
 
 .shop {
+	position: fixed;
+	top: 0;
+	width: 60%;
+	height: 90%;
+	right: 10px;
 	display: flex;
 	flex-direction: row;
 	gap: 10px;
 	border: 1px solid black;
 	border-radius: 15px;
+	box-sizing: border-box;
 	padding: 10px;
 	margin: 20px 0 20px 0;
 }
@@ -80,4 +90,17 @@ button:hover {
 .form {
 	display: flex;
 	flex-direction: column;
+}
+
+.buy-button {
+	color: yellow;
+	font-size: 48px;
+	background-color: green;
+	border-radius: 10px;
+	width: 300px;
+}
+
+.shop p {
+	font-size: 34px;
+	width: 100%;
 }

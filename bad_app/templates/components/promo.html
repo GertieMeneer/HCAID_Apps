@@ -1,0 +1,40 @@
+<div class="shop">
+	<div id="slide-1">
+		<img src="{{ url_for('static', filename='img/book.jpg')}}" width="800px" height="800px" />
+		<p>This book will tell you more about mushrooms. A must have for people interested in AI!</p>
+		<p>€439,65</p>
+		<button class="buy-button" onclick="window.location='/get-started'">Buy now!</button>
+	</div>
+	<div id="slide-2">
+		<img src="{{ url_for('static', filename='img/ai_course.jpg')}}" width="800px" height="800px" />
+		<p>Ever wondered how AI works? Follow our 30 minute guide and take a deep dive into the basics of AI!</p>
+		<p>€389,99</p>
+		<button class="buy-button" onclick="window.location='/get-started'">Buy now!</button>
+	</div>
+	<div id="slide-3">
+		<img src="{{ url_for('static', filename='img/rating.png')}}" />
+		<p>Users rate us a 9.6/10!</p>
+	</div>
+</div>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const ids = ["slide-1", "slide-2", "slide-3"];
+		let current = 0;
+
+		function showSlide(index) {
+			ids.forEach((id, i) => {
+				const el = document.getElementById(id);
+				el.style.display = i === index ? "block" : "none";
+			});
+		}
+
+		function nextSlide() {
+			current = (current + 1) % ids.length;
+			showSlide(current);
+		}
+
+		showSlide(current);
+		setInterval(nextSlide, 1500);
+	});
+</script>

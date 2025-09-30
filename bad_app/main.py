@@ -89,21 +89,18 @@ def more_user_data():
         
     return render_template("/user-data.html", shopping_cart_items=shopping_cart)
 
-@app.route("/mushroom-questions")
-def mushroom_questions():
-    return render_template("/mushroom-questions.html");
-
-@app.route("/mushroom-questions", methods=["POST"])
-def user_movie_data():
-    return render_template("/mushroom-questions.html")
-
-@app.route("/prediction")
-def prediction():
-    return render_template("/prediction.html")
-
 @app.route("/why-these-questions")
 def why_these_questions_page():
     return render_template("/questions-info.html")
+
+# debug endpoint to skip all those annoying popups lol
+@app.route("/mushroom-questions")
+def mushroom_questions():
+    return render_template("mushroom-questions.html", shopping_cart_items=get_shopping_cart_count(request.cookies.get("username")));
+
+@app.route("/mushroom-questions", methods=["POST"])
+def user_movie_data():
+    return render_template("mushroom-questions.html", shopping_cart_items=get_shopping_cart_count(request.cookies.get("username")))
 
 @app.route("/predict", methods=["POST"])
 def result():

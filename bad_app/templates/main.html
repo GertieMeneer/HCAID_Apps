@@ -7,9 +7,7 @@
 	<body>
 		<h1>Mushroom predictor</h1>
 		<p>Not sure whether to eat a mushroom or not? Click below to find out</p>
-		<img src="{{ url_for('static', filename='img/rating.png')}}" />
-		<p>Users rate us a 9.6/10!</p>
-		{% include "components/shop.html" %}
+		{% include "components/promo.html" %}
 		<form action="/get-started">
 			<button class="get-started-button" type="submit">Click here for mushroom prediction</button>
 		</form>
