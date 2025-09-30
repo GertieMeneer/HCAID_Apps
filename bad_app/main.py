@@ -14,6 +14,23 @@ CATEGORICAL_FEATURES = [
     'veil-color', 'has-ring', 'ring-type', 'spore-print-color'
 ]
 
+CATEGORY_MAPS = {
+    'cap-shape': {'x':'Convex','f':'Flat','s':'Sunken','b':'Bell','o':'Spherical','p':'Plate','c':'Conical','Missing':'Missing'},
+    'cap-surface': {'t':'Tap','s':'Smooth','y':'Scaly','h':'Hairy','g':'Grooves','d':'Dotted','e':'Eroded','k':'Knobbed','i':'Indented','w':'Wrinkled','l':'Layered','Missing':'Missing'},
+    'cap-color': {'n':'Brown','y':'Yellow','w':'White','g':'Gray','e':'Red','o':'Orange','r':'Green','u':'Purple','p':'Pink','k':'Black','b':'Buff','l':'Lilac','Missing':'Missing'},
+    'gill-attachment': {'a':'Attached','d':'Descending','x':'Unknown','p':'Partial','e':'Evanescent','s':'Split','f':'Free','Missing':'Missing'},
+    'gill-spacing': {'c':'Close','d':'Distant','f':'Far','Missing':'Missing'},
+    'gill-color': {'w':'White','n':'Brown','y':'Yellow','p':'Pink','g':'Gray','f':'Buff','o':'Orange','k':'Black','r':'Green','e':'Red','u':'Purple','b':'Buff','Missing':'Missing'},
+    'stem-root': {'s':'Stemmed','b':'Bulbous','r':'Rooted','f':'Flat','c':'Club','Missing':'Missing'},
+    'stem-surface': {'s':'Smooth','y':'Scaly','i':'Indented','t':'Tap','g':'Grooves','k':'Knobbed','f':'Fibrous','h':'Hairy','Missing':'Missing'},
+    'stem-color': {'w':'White','n':'Brown','y':'Yellow','g':'Gray','o':'Orange','e':'Red','u':'Purple','f':'Buff','p':'Pink','k':'Black','r':'Green','l':'Lilac','b':'Beige','Missing':'Missing'},
+    'veil-type': {'u':'Universal','Missing':'Missing'},
+    'veil-color': {'w':'White','y':'Yellow','n':'Brown','u':'Purple','k':'Black','e':'Red','Missing':'Missing'},
+    'has-ring': {'t':'Yes','f':'No','Missing':'Missing'},
+    'ring-type': {'f':'Flaring','e':'Evanescent','z':'Zone','l':'Large','r':'Ring','p':'Pendant','g':'Girdle','m':'Mini','Missing':'Missing'},
+    'spore-print-color': {'k':'Black','p':'Purple','w':'White','n':'Brown','g':'Green','u':'Lilac','r':'Red','Missing':'Missing'}
+}
+
 app = Flask(__name__)
 
 user_data = {}
@@ -72,6 +89,10 @@ def more_user_data():
         
     return render_template("/user-data.html", shopping_cart_items=shopping_cart)
 
+@app.route("/mushroom-questions")
+def mushroom_questions():
+    return render_template("/mushroom-questions.html");
+
 @app.route("/mushroom-questions", methods=["POST"])
 def user_movie_data():
     return render_template("/mushroom-questions.html")
@@ -86,50 +107,36 @@ def why_these_questions_page():
 
 @app.route("/predict", methods=["POST"])
 def result():
-    user_input = {
-        'cap-diameter': request.form['cap_diameter'],
-        'cap-shape': request.form['cap_shape'],
-        'cap-surface': request.form['cap_surface'],
-        'cap-color': request.form['cap_color'],
-        'gill-attachment': request.form['gill_attachment'],
-        'gill-spacing': request.form['gill_spacing'],
-        'gill-color': request.form['gill_color'],
-        'stem-height': request.form['stem_height'],
-        'stem-width': request.form['stem_width'],
-        'stem-root': request.form['stem_root'],
-        'stem-surface': request.form['stem_surface'],
-        'stem-color': request.form['stem_color'],
-        'veil-type': request.form['veil_type'],
-        'veil-color': request.form['veil_color'],
-        'has-ring': request.form['has_ring'],
-        'ring-type': request.form['ring_type'],
-        'spore-print-color': request.form['spore_print_color']
-    }
-
+    user_input = {key: request.form[key] for key in NUMERIC_FEATURES + CATEGORICAL_FEATURES}
     prediction, probability = predict_mushroom(user_input)
-
     class_map = {'p': 'Poisonous', 'e': 'Edible'}
     prediction_full = class_map.get(prediction, prediction)
-
     return render_template("result.html", prediction=prediction_full, probability=probability)
 
 def predict_mushroom(user_input):
     for feature in NUMERIC_FEATURES:
         user_input[feature] = float(user_input[feature])
 
-    input_df = pd.DataFrame([user_input])
+    for feature in CATEGORICAL_FEATURES:
+        value = user_input[feature]
+        if value == "" or value is None:
+            value = 'Missing'
+        user_input[feature] = CATEGORY_MAPS[feature].get(value, 'Missing')
 
+    input_df = pd.DataFrame([user_input])
     input_encoded = pd.get_dummies(input_df, columns=CATEGORICAL_FEATURES)
 
     missing_cols = set(rf.feature_names_in_) - set(input_encoded.columns)
     for col in missing_cols:
         input_encoded[col] = 0
+
     input_encoded = input_encoded[rf.feature_names_in_]
 
     prob = rf.predict_proba(input_encoded)[0]
     pred_index = np.argmax(prob)
     pred_class = le_y.classes_[pred_index]
     confidence = prob[pred_index] * 100
+
     return pred_class, round(confidence, 2)
 
 def is_empty_or_null(value):
