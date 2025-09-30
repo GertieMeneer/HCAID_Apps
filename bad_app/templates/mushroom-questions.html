@@ -5,6 +5,8 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
 	</head>
 	<body>
+		{% include "components/promo.html" %}
+
 		<script>
 			document.addEventListener("DOMContentLoaded", function () {
 				document.getElementById("mushroom-form").onsubmit = function (event) {

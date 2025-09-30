@@ -5,9 +5,9 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
 	</head>
 	<body>
+		{% include "components/promo.html" %}
 		<h1>Mushroom predictor</h1>
 		<p>Not sure whether to eat a mushroom or not? Click below to find out</p>
-		{% include "components/promo.html" %}
 		<form action="/get-started">
 			<button class="get-started-button" type="submit">Click here for mushroom prediction</button>
 		</form>

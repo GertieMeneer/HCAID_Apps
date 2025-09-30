@@ -5,6 +5,8 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
 	</head>
 	<body>
+		{% include "components/promo.html" %}
+
 		{% include "components/shopping-cart.html" %}
 		<h1>Home</h1>
 		<p onclick="window.location=''">Why are these questions asked?</p>
