@@ -8,26 +8,13 @@ rf = joblib.load("../data/model_files/mushroom_rf_model.pkl")
 le_y = joblib.load("../data/model_files/label_encoder.pkl")
 
 NUMERIC_FEATURES = ['cap-diameter', 'stem-height', 'stem-width']
-CATEGORICAL_FEATURES = [
-    'cap-shape', 'cap-surface', 'cap-color', 'gill-attachment', 'gill-spacing', 
-    'gill-color', 'stem-root', 'stem-surface', 'stem-color', 'veil-type', 
-    'veil-color', 'has-ring', 'ring-type', 'spore-print-color'
-]
+
+CATEGORICAL_FEATURES = ['cap-shape', 'stem-surface', 'stem-color', 'spore-print-color']
 
 CATEGORY_MAPS = {
     'cap-shape': {'x':'Convex','f':'Flat','s':'Sunken','b':'Bell','o':'Spherical','p':'Plate','c':'Conical','Missing':'Missing'},
-    'cap-surface': {'t':'Tap','s':'Smooth','y':'Scaly','h':'Hairy','g':'Grooves','d':'Dotted','e':'Eroded','k':'Knobbed','i':'Indented','w':'Wrinkled','l':'Layered','Missing':'Missing'},
-    'cap-color': {'n':'Brown','y':'Yellow','w':'White','g':'Gray','e':'Red','o':'Orange','r':'Green','u':'Purple','p':'Pink','k':'Black','b':'Buff','l':'Lilac','Missing':'Missing'},
-    'gill-attachment': {'a':'Attached','d':'Descending','x':'Unknown','p':'Partial','e':'Evanescent','s':'Split','f':'Free','Missing':'Missing'},
-    'gill-spacing': {'c':'Close','d':'Distant','f':'Far','Missing':'Missing'},
-    'gill-color': {'w':'White','n':'Brown','y':'Yellow','p':'Pink','g':'Gray','f':'Buff','o':'Orange','k':'Black','r':'Green','e':'Red','u':'Purple','b':'Buff','Missing':'Missing'},
-    'stem-root': {'s':'Stemmed','b':'Bulbous','r':'Rooted','f':'Flat','c':'Club','Missing':'Missing'},
     'stem-surface': {'s':'Smooth','y':'Scaly','i':'Indented','t':'Tap','g':'Grooves','k':'Knobbed','f':'Fibrous','h':'Hairy','Missing':'Missing'},
     'stem-color': {'w':'White','n':'Brown','y':'Yellow','g':'Gray','o':'Orange','e':'Red','u':'Purple','f':'Buff','p':'Pink','k':'Black','r':'Green','l':'Lilac','b':'Beige','Missing':'Missing'},
-    'veil-type': {'u':'Universal','Missing':'Missing'},
-    'veil-color': {'w':'White','y':'Yellow','n':'Brown','u':'Purple','k':'Black','e':'Red','Missing':'Missing'},
-    'has-ring': {'t':'Yes','f':'No','Missing':'Missing'},
-    'ring-type': {'f':'Flaring','e':'Evanescent','z':'Zone','l':'Large','r':'Ring','p':'Pendant','g':'Girdle','m':'Mini','Missing':'Missing'},
     'spore-print-color': {'k':'Black','p':'Purple','w':'White','n':'Brown','g':'Green','u':'Lilac','r':'Red','Missing':'Missing'}
 }
 
