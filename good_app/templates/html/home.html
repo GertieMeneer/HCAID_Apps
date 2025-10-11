@@ -1,129 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mushroom Predictor 🍄</title>
-  <style>
-    body {
-      margin: 0;
-      background: #fdf6e3;
-      font-family: 'Arial', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-      position: relative;
-    }
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Mushroom Predictor 🍄</title>
+		<style>
+			body {
+				margin: 0;
+				background: #fdf6e3;
+				font-family: "Arial", sans-serif;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				overflow: hidden;
+				position: relative;
+			}
 
-    .container {
-      text-align: center;
-      position: relative;
-      z-index: 10;
-    }
+			.container {
+				text-align: center;
+				position: relative;
+				z-index: 10;
+			}
 
-    h1 {
-      font-size: 4rem;
-      color: #4a2c2a;
-      margin-bottom: 10px;
-    }
+			h1 {
+				font-size: 4rem;
+				color: #4a2c2a;
+				margin-bottom: 10px;
+			}
 
-    p {
-      font-size: 1.6rem;
-      margin-bottom: 30px;
-      color: #333;
-    }
+			p {
+				font-size: 1.6rem;
+				margin-bottom: 30px;
+				color: #333;
+			}
 
-    .button-group {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
+			.button-group {
+				display: flex;
+				justify-content: center;
+				gap: 20px;
+			}
 
-    .button {
-      padding: 15px 40px;
-      font-size: 1.3rem;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-      text-decoration: none;
-    }
+			.button {
+				padding: 15px 40px;
+				font-size: 1.3rem;
+				border: none;
+				border-radius: 10px;
+				cursor: pointer;
+				transition: 0.3s;
+				text-decoration: none;
+			}
 
-    .try {
-      background: #28a745;
-      color: #fff;
-    }
+			.try {
+				background: #28a745;
+				color: #fff;
+			}
 
-    .try:hover {
-      background: #1f8c39;
-    }
+			.try:hover {
+				background: #1f8c39;
+			}
 
-    .info {
-      background: #0077ff;
-      color: #fff;
-    }
+			.info {
+				background: #0077ff;
+				color: #fff;
+			}
 
-    .info:hover {
-      background: #005fcc;
-    }
+			.info:hover {
+				background: #005fcc;
+			}
 
-    .mushroom, .fork, .knife, .plate {
-      position: absolute;
-      width: 90px;
-      opacity: 0.95;
-    }
+			.mushroom,
+			.fork,
+			.knife,
+			.plate {
+				position: absolute;
+				width: 90px;
+				opacity: 0.95;
+			}
 
-    .m1 { top: 8%; left: 12%; transform: rotate(-15deg); }
-    .m2 { top: 15%; right: 10%; transform: rotate(15deg); }
-    .m3 { bottom: 12%; left: 18%; transform: rotate(5deg); }
-    .m4 { bottom: 8%; right: 20%; transform: rotate(-10deg); }
+			.m1 {
+				top: 8%;
+				left: 12%;
+				transform: rotate(-15deg);
+			}
+			.m2 {
+				top: 15%;
+				right: 10%;
+				transform: rotate(15deg);
+			}
+			.m3 {
+				bottom: 12%;
+				left: 18%;
+				transform: rotate(5deg);
+			}
+			.m4 {
+				bottom: 8%;
+				right: 20%;
+				transform: rotate(-10deg);
+			}
 
-    .fork {
-      bottom: 5%;
-      left: 5%;
-      width: 110px;
-      transform: rotate(-20deg);
-    }
+			.fork {
+				bottom: 5%;
+				left: 5%;
+				width: 110px;
+				transform: rotate(-20deg);
+			}
 
-    .knife {
-      bottom: 5%;
-      right: 5%;
-      width: 110px;
-      transform: rotate(20deg);
-    }
+			.knife {
+				bottom: 5%;
+				right: 5%;
+				width: 110px;
+				transform: rotate(20deg);
+			}
 
-    .plate {
-      width: 340px;
-      opacity: 0.15;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 0;
-    }
-  </style>
-</head>
-<body>
+			.plate {
+				width: 340px;
+				opacity: 0.15;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				z-index: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="https://pngimg.com/uploads/mushroom/mushroom_PNG3218.png" class="mushroom m1" alt="mushroom" />
+		<img src="https://pngimg.com/uploads/mushroom/mushroom_PNG3188.png" class="mushroom m2" alt="mushroom" />
+		<img src="https://pngimg.com/uploads/mushroom/mushroom_PNG3187.png" class="mushroom m3" alt="mushroom" />
+		<img src="https://pngimg.com/uploads/mushroom/mushroom_PNG3194.png" class="mushroom m4" alt="mushroom" />
 
-  <img src="https://pngimg.com/uploads/mushroom/mushroom_PNG3218.png" class="mushroom m1" alt="mushroom" />
-  <img src="https://pngimg.com/uploads/mushroom/mushroom_PNG3188.png" class="mushroom m2" alt="mushroom" />
-  <img src="https://pngimg.com/uploads/mushroom/mushroom_PNG3187.png" class="mushroom m3" alt="mushroom" />
-  <img src="https://pngimg.com/uploads/mushroom/mushroom_PNG3194.png" class="mushroom m4" alt="mushroom" />
+		<img src="https://pngimg.com/uploads/fork/fork_PNG3052.png" class="fork" alt="fork" />
+		<img src="https://pngimg.com/uploads/knife/knife_PNG106113.png" class="knife" alt="knife" />
+		<img src="https://pngimg.com/uploads/plate/plate_PNG5335.png" class="plate" alt="plate" />
 
-  <img src="https://pngimg.com/uploads/fork/fork_PNG3052.png" class="fork" alt="fork" />
-  <img src="https://pngimg.com/uploads/knife/knife_PNG106113.png" class="knife" alt="knife" />
-  <img src="https://pngimg.com/uploads/plate/plate_PNG5335.png" class="plate" alt="plate" />
-
-  <div class="container">
-    <h1>🍄 Mushroom Predictor 🍄</h1>
-    <p>Can I eat the mushroom?</p>
-    <div class="button-group">
-      <a href="/main" class="button try">Try it</a>
-      <a href="/info" class="button info">More info</a>
-    </div>
-  </div>
-
-</body>
+		<div class="container">
+			<h1>🍄 Mushroom Predictor 🍄</h1>
+			<p>Can I eat the mushroom?</p>
+			<div class="button-group">
+				<a href="/main" class="button try">Try it</a>
+				<a href="/info" class="button info">More info</a>
+			</div>
+		</div>
+	</body>
 </html>

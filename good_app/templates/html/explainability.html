@@ -1,63 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Explainability 🍄</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #fdf6e3;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-    }
-    .container {
-      max-width: 800px;
-      background: #fff;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
-    }
-    h1 {
-      font-size: 3rem;
-      color: #4a2c2a;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 1.4rem;
-      color: #333;
-      margin-bottom: 40px;
-    }
-    .button {
-      display: inline-block;
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      background: #0077ff;
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .button:hover {
-      background: #005fcc;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>💡 Explainability</h1>
-    <p>
-      Our system uses a Random Forest model, which is like a team of “decision trees”. Each tree looks at the mushroom’s features such as cap shape and the color, and makes a prediction. The forest combines all the trees different predictions to decide if a mushroom is edible or poisonous.
-      The model also shows a confidence score, letting you know how strongly it leans toward one outcome. Features like stem width, cap diameter or stem height often have the biggest influence on the prediction.
-      Most importantly, the system is designed to prioritize safety: it avoids recommending mushrooms that might be poisonous, even if there’s uncertainty.
-    </p>
-    <a href="/info" class="button">⬅ Back to Info</a>
-  </div>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Explainability 🍄</title>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				background: #fdf6e3;
+				font-family: Arial, sans-serif;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				text-align: center;
+			}
+			.container {
+				max-width: 800px;
+				background: #fff;
+				padding: 40px;
+				border-radius: 20px;
+				box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+			}
+			h1 {
+				font-size: 3rem;
+				color: #4a2c2a;
+				margin-bottom: 20px;
+			}
+			p {
+				font-size: 1.4rem;
+				color: #333;
+				margin-bottom: 40px;
+			}
+			.button {
+				display: inline-block;
+				padding: 15px 30px;
+				font-size: 1.2rem;
+				background: #0077ff;
+				color: #fff;
+				border: none;
+				border-radius: 10px;
+				text-decoration: none;
+				transition: 0.3s;
+			}
+			.button:hover {
+				background: #005fcc;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>💡 Explainability</h1>
+			<p>
+				Our system uses a Random Forest model, which is like a team of “decision trees”. Each tree looks at the mushroom’s features such as cap shape and the color, and makes a prediction. The
+				forest combines all the trees different predictions to decide if a mushroom is edible or poisonous. The model also shows a confidence score, letting you know how strongly it leans
+				toward one outcome. Features like stem width, cap diameter or stem height often have the biggest influence on the prediction. Most importantly, the system is designed to prioritize
+				safety: it avoids recommending mushrooms that might be poisonous, even if there’s uncertainty.
+			</p>
+			<a href="/info" class="button">⬅ Back to Info</a>
+		</div>
+	</body>
 </html>

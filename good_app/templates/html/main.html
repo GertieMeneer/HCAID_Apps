@@ -104,6 +104,36 @@
 			.predict-btn:hover {
 				background: #218838;
 			}
+
+			ul {
+				list-style: none;
+				padding: 0;
+				text-align: left;
+				font-size: 1.2rem;
+				margin-bottom: 30px;
+			}
+
+			ul li {
+				margin-bottom: 10px;
+			}
+
+			.info-section {
+				text-align: left;
+				background: #f0f8ff;
+				padding: 20px;
+				border-radius: 15px;
+				margin-top: 30px;
+				font-size: 1.2rem;
+			}
+
+			.info-section h3 {
+				color: #4a2c2a;
+				margin-bottom: 10px;
+			}
+
+			.info-section ul li {
+				margin-bottom: 8px;
+			}
 		</style>
 	</head>
 	<body>
@@ -203,6 +233,19 @@
 					<button type="submit" class="predict-btn">🔍 Predict</button>
 				</div>
 			</form>
+
+			<div class="info-section">
+				<h3>How to Measure Mushrooms Correctly:</h3>
+				<ul>
+					<li>Use a ruler or caliper to measure the cap diameter, stem length, and thickness.</li>
+					<li>Take photos from multiple angles to capture identifying features.</li>
+					<li>Take a good look at the color and structure of the gills, spores, and texture if possible.</li>
+					<li>
+						Compare your results with standardized data in the
+						<a href="https://www.kaggle.com/datasets/vishalpnaik/mushroom-classification-edible-or-poisonous" target="_blank">Kaggle Mushroom Classification Dataset</a>.
+					</li>
+				</ul>
+			</div>
 		</div>
 
 		<script>
